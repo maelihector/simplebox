@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Code Exam</title>
+  <style>
+    .redbox {
+      background: #ff0000;
+    }
+
+    .greenbox {
+      background: #008000;
+    }
+
+    .bluebox {
+      background: #0000ff;
+    }
+
+    .whitebox {
+      background: #ffffff;
+    }
+
+    [class$="box"] {
+      border: solid #000 1px;
+      min-height: inherit;
+    }
+
+    .container {
+      justify-content: center;
+      max-width: 980px;
+      min-height: 100px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(60px, 230px));
+      grid-template-rows: 1fr;
+      grid-gap: 20px;
+    }
+
+    button {
+      height: 20px;
+      width: 100px;
+      margin: -20px -50px;
+      position: relative;
+      top: 40%;
+      left: 50%;
+      background: #ffffff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <div class="redbox">
+      <button>Red</button>
+    </div>
+    <div class="greenbox">
+      <button>Green</button>
+    </div>
+    <div class="bluebox">
+      <button>Blue</button>
+    </div>
+    <div class="whitebox">
+      <button>White</button>
+    </div>
+
+  </main>
+
+  <!-- JQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Javascript -->
+  <script>
+    $(document).ready(function () {
+
+      // Grab refrences to HTML box elements
+      const redbox = $(".redbox");
+      const greenbox = $(".greenbox");
+      const bluebox = $(".bluebox");
+      const whitebox = $(".whitebox");
+
+      // Click event function to capture button clicks
+      $("main").click(function (event) {
+        // Grab color of button clicked
+        let color = event.target.innerHTML;
+        // If color is not white
+        if (color.length < 6 && color !== "White") {
+
+          // Change the color of appropriate boxes to color box clicked
+          $(redbox).css("background", color);
+          $(greenbox).css("background", color);
+          $(bluebox).css("background", color);
+
+        }
+        // If color is white
+        if (color == "White"){
+          // Reset colors of boxes to original
+          $(redbox).css("background", redbox[0].innerText);
+          $(greenbox).css("background", greenbox[0].innerText);
+          $(bluebox).css("background", bluebox[0].innerText);
+        }
+
+      });
+
+    });
+    
+  </script>
+
+</body>
+
+</html>
